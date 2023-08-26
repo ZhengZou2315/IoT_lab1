@@ -1,7 +1,7 @@
 import picamera
 
 def take_photo():
-    with PiCamera() as camera:
+    with picamera.PiCamera() as camera:
         # do something with the camera
         camera.capture('test.jpg')
 
