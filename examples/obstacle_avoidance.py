@@ -8,9 +8,10 @@ def main():
         if not scan_list:
             continue
 
-        tmp = scan_list[3:7]
+        tmp = scan_list[2:8]
+        print('scan_list:',scan_list)
         print(tmp)
-        if tmp != [2,2,2,2]:
+        if tmp != [2,2,2,2,2,2]:
             fc.turn_right(speed)
         else:
             fc.forward(speed)

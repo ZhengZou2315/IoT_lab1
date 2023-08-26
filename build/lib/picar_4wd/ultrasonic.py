@@ -21,7 +21,7 @@ class Ultrasonic():
 
     def get_distance(self):
         self.trig.low()
-        time.sleep(100)
+        time.sleep(0.01)
         self.trig.high()
         time.sleep(0.000015)
         self.trig.low()
