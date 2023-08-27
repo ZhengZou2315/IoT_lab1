@@ -71,7 +71,7 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
       )
 
     counter += 1
-    print('count: ',count)
+    print('counter: ', counter)
     image = cv2.flip(image, 1)
     print('image:\n',image)
 
