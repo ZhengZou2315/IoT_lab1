@@ -144,7 +144,8 @@ def scan_step(ref):
         us_step = STEP
     status = get_status_at(current_angle, ref1=ref)#ref1
 
-    scan_list.append((current_angle,status))
+    # scan_list.append((current_angle,status))
+    scan_list.append(current_angle)
     print('working in scan_list: ',scan_list)
     if current_angle == min_angle or current_angle == max_angle:
         if us_step < 0:
