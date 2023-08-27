@@ -86,15 +86,15 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
     # print(' ')
     # Run object detection estimation using the model.
     detection_result = detector.detect(input_tensor)
-    print('detection_result:\n',detection_result)
-    print(' ')
-    print(' ')
+    # print('detection_result:\n',detection_result)
+    # print(' ')
+    # print(' ')
     detections = detection_result.detections
     for detection in detections:
-      print('detection:  ',detection)
-      print(' ')
+      # print('detection:  ',detection)
+      # print(' ')
       for category in detection.categories:
-        print('category:  ', category)
+        print('category_name:  ', category.category_name, '   score: ', category.score)
     # Draw keypoints and edges on input image
     image = utils.visualize(image, detection_result)
     # print('image:\n',image)
