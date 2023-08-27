@@ -17,7 +17,7 @@ def main():
         tmp = scan_list[2:8]
         print('scan_list:',scan_list)
         print(tmp)
-        tmp = [angle for (angle,status) in tmp]
+        tmp = [ele[0] for ele in tmp]
         # if tmp != [2,2,2,2,2,2]:
         #     fc.turn_right(speed)
         # else:
