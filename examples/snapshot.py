@@ -18,10 +18,10 @@ def main():
         print('scan_list:',scan_list)
         print(tmp)
         tmp = [angle for (angle,status) in tmp]
-        if tmp != [2,2,2,2,2,2]:
-            fc.turn_right(speed)
-        else:
-            fc.forward(speed)
+        # if tmp != [2,2,2,2,2,2]:
+        #     fc.turn_right(speed)
+        # else:
+        #     fc.forward(speed)
 
 if __name__ == "__main__":
     try: 
