@@ -15,9 +15,9 @@ def main():
             continue
 
         tmp = scan_list[2:8]
-        print('scan_list:',scan_list)
-        print(tmp)
-        tmp = [ele[0] for ele in tmp]
+        print('scan_list:\n',scan_list)
+        print('tmp:\n',tmp)
+        # tmp = [ele[0] for ele in tmp]
         # if tmp != [2,2,2,2,2,2]:
         #     fc.turn_right(speed)
         # else:
