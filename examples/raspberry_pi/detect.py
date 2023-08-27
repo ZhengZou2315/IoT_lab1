@@ -94,7 +94,9 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
       # print('detection:  ',detection)
       # print(' ')
       for category in detection.categories:
-        print('category_name:  ', category.category_name, '   score: ', category.score)
+        # print('category_name:  ', category.category_name, '   score: ', category.score)
+        if category.category_name == 'stop sign':
+          print('stop sign identified!!!')
     # Draw keypoints and edges on input image
     image = utils.visualize(image, detection_result)
     # print('image:\n',image)
