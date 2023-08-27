@@ -73,25 +73,32 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
     counter += 1
     print('counter: ', counter)
     image = cv2.flip(image, 1)
-    print('image:\n',image)
+    # print('image:\n',image)
 
-    print(' ')
+    # print(' ')
     # Convert the image from BGR to RGB as required by the TFLite model.
     rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    print('rgb_image:\n',rgb_image)
-    print(' ')
+    # print('rgb_image:\n',rgb_image)
+    # print(' ')
     # Create a TensorImage object from the RGB image.
     input_tensor = vision.TensorImage.create_from_array(rgb_image)
-    print('input_tensor:\n',input_tensor)
-    print(' ')
+    # print('input_tensor:\n',input_tensor)
+    # print(' ')
     # Run object detection estimation using the model.
     detection_result = detector.detect(input_tensor)
     print('detection_result:\n',detection_result)
     print(' ')
+    print(' ')
+    detections = detection_result.detections
+    for detection in detections:
+      print('detection:  ',detection)
+      print(' ')
+      for category in detection.categories:
+        print('category:  ', category)
     # Draw keypoints and edges on input image
     image = utils.visualize(image, detection_result)
-    print('image:\n',image)
-    print(' ')
+    # print('image:\n',image)
+    # print(' ')
     # Calculate the FPS
     if counter % fps_avg_frame_count == 0:
       end_time = time.time()
