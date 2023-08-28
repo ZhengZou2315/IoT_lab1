@@ -75,7 +75,7 @@ def test3():
     # speed4 = Speed(5)
     speed4.start()
     # time.sleep(2)
-    fc.forward(20)
+    fc.forward(200)
     x = 0
     for i in range(20):
         time.sleep(0.1)
