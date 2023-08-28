@@ -77,7 +77,7 @@ def test3():
     # time.sleep(2)
     # fc.forward(20)
     fc.turn_left(20)
-    time.sleep(0.1)
+    time.sleep(1)
     x = 0
 
     # for i in range(20):
