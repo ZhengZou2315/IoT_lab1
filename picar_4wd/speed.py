@@ -77,7 +77,21 @@ def test3():
     # time.sleep(2)
     # fc.forward(20)
     fc.turn_left(20)
-    time.sleep(1)
+    # time.sleep(1)
+
+    while True:
+        scan_list = fc.scan_step(35)
+        front_fist = float('inf')
+        for angle,dist in scan_list:
+            if angle == 0:
+                front_fist = dist
+        
+        if dist < 30:
+            fc.stop()
+
+
+
+
     x = 0
 
     # for i in range(20):
@@ -88,7 +102,7 @@ def test3():
     #     print("%smm/s"%speed)
     print("%smm"%x)
     speed4.deinit()
-    fc.stop()
+    # fc.stop()
 if __name__ == "__main__":
     test3()
 
