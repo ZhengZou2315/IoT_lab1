@@ -71,11 +71,11 @@ def test2():
         time.sleep(0.001) 
 
 def test3():
-    speed4 = Speed(45)
+    speed4 = Speed(25)
     # speed4 = Speed(5)
     speed4.start()
     # time.sleep(2)
-    fc.forward(100)
+    fc.forward(20)
     x = 0
     for i in range(20):
         time.sleep(0.1)
