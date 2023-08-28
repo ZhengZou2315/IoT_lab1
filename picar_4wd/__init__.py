@@ -133,30 +133,30 @@ def get_status_at(angle, ref1=35, ref2=10):
     else:
         return 0
 
-# def scan_step(ref):
-#     global scan_list, current_angle, us_step
-#     current_angle += us_step
-#     if current_angle >= max_angle:
-#         current_angle = max_angle
-#         us_step = -STEP
-#     elif current_angle <= min_angle:
-#         current_angle = min_angle
-#         us_step = STEP
-#     status = get_status_at(current_angle, ref1=ref)#ref1
+def scan_step(ref):
+    global scan_list, current_angle, us_step
+    current_angle += us_step
+    if current_angle >= max_angle:
+        current_angle = max_angle
+        us_step = -STEP
+    elif current_angle <= min_angle:
+        current_angle = min_angle
+        us_step = STEP
+    status = get_status_at(current_angle, ref1=ref)#ref1
 
-#     # scan_list.append((current_angle,status))
-#     scan_list.append(current_angle)
-#     print('working in scan_list: ',scan_list)
-#     if current_angle == min_angle or current_angle == max_angle:
-#         if us_step < 0:
-#             # print("reverse")
-#             scan_list.reverse()
-#         # print(scan_list)
-#         tmp = scan_list.copy()
-#         scan_list = []
-#         return tmp
-#     else:
-#         return False
+    scan_list.append((current_angle,status))
+    # scan_list.append(current_angle)
+    # print('working in scan_list: ',scan_list)
+    if current_angle == min_angle or current_angle == max_angle:
+        if us_step < 0:
+            # print("reverse")
+            scan_list.reverse()
+        # print(scan_list)
+        tmp = scan_list.copy()
+        scan_list = []
+        return tmp
+    else:
+        return False
 
 ########################################################
 # Motors
