@@ -78,17 +78,17 @@ def test3():
     # fc.forward(20)
     fc.turn_left(20)
     # time.sleep(1)
+    front_dist = float('inf')
 
     while True:
-        scan_list = fc.scan_step(35)
-        front_dist = float('inf')
+        scan_list = fc.scan_step(35)        
         if not scan_list:
             continue
         for angle,dist in scan_list:
             if angle == 0:
                 front_dist = dist
         
-        if front_dist < 30:
+        if front_dist > 30:
             break
 
 
