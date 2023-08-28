@@ -71,8 +71,8 @@ def test2():
         time.sleep(0.001) 
 
 def test3():
-    # speed4 = Speed(25)
-    speed4 = Speed(5)
+    speed4 = Speed(25)
+    # speed4 = Speed(5)
     speed4.start()
     # time.sleep(2)
     fc.forward(10)
