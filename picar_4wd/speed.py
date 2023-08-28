@@ -85,10 +85,10 @@ def test3():
         if not scan_list:
             continue
         for angle,dist in scan_list:
-            if angle == -54:
+            if angle == -72:
                 front_dist = dist
         
-        if front_dist > 30:
+        if front_dist > 50:
             break
 
 
