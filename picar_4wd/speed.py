@@ -81,7 +81,8 @@ def test3():
     front_dist = float('inf')
 
     while True:
-        scan_list = fc.scan_step(35)        
+        scan_list = fc.scan_step(35) 
+        print('scan_list:\n', scan_list)       
         if not scan_list:
             continue
         for angle,dist in scan_list:
