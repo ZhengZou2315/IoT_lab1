@@ -92,7 +92,7 @@ def test3():
         if front_dist > 30:
             break
         fc.turn_left(20)
-        time.sleep(0.1)
+        time.sleep(0.2)
         fc.stop()
 
 
