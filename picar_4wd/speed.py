@@ -1,7 +1,8 @@
 import RPi.GPIO as GPIO
 import time, math
 import threading
-from . import *
+# from . import *
+import picar_4wd as fc
 
 class Speed():
     def __init__(self, pin):
@@ -85,6 +86,7 @@ def test3():
     fc.stop()
 if __name__ == "__main__":
     test3()
+
         
 
     
