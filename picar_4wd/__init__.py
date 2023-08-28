@@ -21,7 +21,8 @@ left_front_reverse = config.get('left_front_reverse', default_value = False)
 right_front_reverse = config.get('right_front_reverse', default_value = False)
 left_rear_reverse = config.get('left_rear_reverse', default_value = False)
 right_rear_reverse = config.get('right_rear_reverse', default_value = False)    
-ultrasonic_servo_offset = int(config.get('ultrasonic_servo_offset', default_value = 0)) 
+# previous default value = 0
+ultrasonic_servo_offset = int(config.get('ultrasonic_servo_offset', default_value = 90)) 
 
 # Init motors
 left_front = Motor(PWM("P13"), Pin("D4"), is_reversed=left_front_reverse) # motor 1
@@ -143,8 +144,9 @@ def scan_step(ref):
         current_angle = min_angle
         us_step = STEP
     status = get_status_at(current_angle, ref1=ref)#ref1
+    dist = get_distance_at(current_angle)
 
-    scan_list.append((current_angle,status))
+    scan_list.append((current_angle,dist))
     # scan_list.append(current_angle)
     # print('working in scan_list: ',scan_list)
     if current_angle == min_angle or current_angle == max_angle:
