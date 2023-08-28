@@ -88,8 +88,10 @@ STEP = 18
 us_step = STEP
 angle_distance = [0,0]
 current_angle = 0
-max_angle = ANGLE_RANGE/2
-min_angle = -ANGLE_RANGE/2
+# max_angle = ANGLE_RANGE/2
+# min_angle = -ANGLE_RANGE/2
+max_angle = ANGLE_RANGE
+min_angle = 0
 scan_list = []
 
 errors = []
