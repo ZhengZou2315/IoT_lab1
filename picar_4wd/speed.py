@@ -80,6 +80,7 @@ def test3():
     for i in range(20):
         time.sleep(0.1)
         speed = speed4()
+        print('speed:',speed)
         x += speed * 0.1
         print("%smm/s"%speed)
     print("%smm"%x)
