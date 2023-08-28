@@ -77,12 +77,13 @@ def test3():
     # time.sleep(2)
     fc.forward(20)
     x = 0
-    for i in range(20):
-        time.sleep(0.1)
-        speed = speed4()
-        print('speed:',speed)
-        x += speed * 0.1
-        print("%smm/s"%speed)
+    
+    # for i in range(20):
+    #     time.sleep(0.1)
+    #     speed = speed4()
+    #     print('speed:',speed)
+    #     x += speed * 0.1
+    #     print("%smm/s"%speed)
     print("%smm"%x)
     speed4.deinit()
     fc.stop()
