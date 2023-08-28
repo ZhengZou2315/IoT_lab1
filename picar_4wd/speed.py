@@ -78,7 +78,7 @@ def test3():
     # fc.forward(20)
     fc.turn_left(20)
     # time.sleep(1)
-    front_dist = float('inf')
+    front_dist = 0
 
     while True:
         scan_list = fc.scan_step(35) 
