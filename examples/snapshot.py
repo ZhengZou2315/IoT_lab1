@@ -258,7 +258,7 @@ if __name__ == "__main__":
         speed = speed4()
         print('speed: ',speed)
         x += speed * 0.1
-        print("%smm/s"%speed)
+        print("%scm/s"%speed)
 
     speed4.deinit()
     print('x:  ',x)
