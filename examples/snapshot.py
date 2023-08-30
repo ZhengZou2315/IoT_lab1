@@ -171,8 +171,15 @@ def main():
 if __name__ == "__main__":
   try: 
       # main()
-    fc.turn_left(20)
-    time.sleep(1.74)
+
+    # # turn left parameters
+    # fc.turn_left(20)
+    # time.sleep(1.8)
+    # fc.stop()
+
+    # turn right parameters
+    fc.turn_right(20)
+    time.sleep(1.8)
     fc.stop()
   finally: 
       fc.stop()
