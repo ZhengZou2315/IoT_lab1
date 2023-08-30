@@ -13,15 +13,21 @@ def take_photo():
 
 
 def turn_left():
-    # turn 90 degree
-    pass
+  # turn 90 degree
+  # turn left parameters
+  fc.turn_left(20)
+  time.sleep(1.8)
+  fc.stop()
 
 def turn_right():
-    # turn 90 degree
-    pass
+  # turn 90 degree
+  # turn right parameters
+  fc.turn_right(20)
+  time.sleep(1.8)
+  fc.stop()
 
 def move_forward(dist: int):
-    pass
+  pass
 
 def get_scan_list():
   scan_list = False
@@ -133,13 +139,85 @@ def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
     temp.append(parent)
     get_paths(parent[0], parent[1], node_to_parents, dest_x, dest_y, temp, paths)
     temp.pop()
-  
+
+def move_forward(x:int):
+  pass
    
 def move_x(x:int, next_x:int, cur_dir:str):
-    pass
+  diff = next_x - x
+  if cur_dir == 'N':
+    if diff > 0:
+      turn_right()
+      move_forward(diff)
+      cur_dir = 'E'
+    else:
+      cur_dir = 'W'
+      turn_left()
+      move_forward(diff)
+  elif cur_dir == 'S':
+    if diff > 0:
+      cur_dir = 'E'
+      turn_left()
+      move_forward(diff)
+    else:
+      cur_dir = 'W'
+      turn_right()
+      move_forward(diff)
+  elif cur_dir == 'E':
+    if diff > 0:
+      move_forward(diff)
+    else:
+      cur_dir = 'W'
+      turn_left()
+      turn_left()
+      move_forward(diff)
+  elif cur_dir == 'W':
+    if diff > 0:
+      cur_dir = 'E'
+      turn_right()
+      turn_right()
+      move_forward(diff)
+    else:
+      move_forward(diff)
+  return cur_dir
 
 def move_y(y:int, next_y:int, cur_dir:str):
-    pass
+    diff = next_y - y
+    if cur_dir == 'N':
+      if diff > 0:
+        move_forward(diff)
+      else:
+        cur_dir = 'S'
+        turn_left()
+        turn_left()
+        move_forward(diff)
+    elif cur_dir == 'S':
+      if diff > 0:
+        cur_dir = 'N'
+        turn_left()
+        turn_left()
+        move_forward(diff)
+      else:
+        move_forward(diff)
+    elif cur_dir == 'E':
+      if diff > 0:
+        turn_left()
+        cur_dir = 'N'
+        move_forward(diff)
+      else:
+        turn_right()
+        cur_dir = 'S'
+        move_forward(diff)
+    elif cur_dir == 'W':
+      if diff > 0:
+        turn_right()
+        cur_dir = 'N'
+        move_forward(diff)
+      else:
+        turn_left()
+        cur_dir = 'S'
+        move_forward(diff)
+
 
 def move(x:int, y:int, next_x:int, next_y:int, cur_dir:str):
   cur_dir = move_x(x,next_x, cur_dir)
@@ -171,15 +249,21 @@ def main():
 if __name__ == "__main__":
   try: 
       # main()
+    speed4 = fc.Speed(25)
+    speed4.start()
+    x = 0
+    fc.forward(20)
+    for i in range(20):
+        time.sleep(0.1)
+        speed = speed4()
+        print('speed: ',speed)
+        x += speed * 0.1
+        print("%smm/s"%speed)
 
-    # # turn left parameters
-    # fc.turn_left(20)
-    # time.sleep(1.8)
-    # fc.stop()
+    speed4.deinit()
+    print('x:  ',x)
+    
 
-    # turn right parameters
-    fc.turn_right(20)
-    time.sleep(1.8)
-    fc.stop()
+   
   finally: 
       fc.stop()
