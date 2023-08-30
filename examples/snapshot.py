@@ -249,7 +249,7 @@ def main():
 if __name__ == "__main__":
   try: 
       # main()
-    speed4 = fc.Speed(24)
+    speed4 = fc.Speed(25)
     speed4.start()
     x = 0
     fc.forward(20)
