@@ -172,7 +172,7 @@ if __name__ == "__main__":
   try: 
       # main()
     fc.turn_left(20)
-    time.sleep(1)
+    time.sleep(2)
     fc.stop()
   finally: 
       fc.stop()
