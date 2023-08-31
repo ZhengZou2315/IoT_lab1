@@ -268,7 +268,7 @@ if __name__ == "__main__":
   try: 
       # main()
     # it is reasonable to move 3cm as a step, 0.12 second.
-    move_forward(20) 
+    move_forward(10) 
     # speed_val = 25
     # for speed_val in [10, 15, 20, 25, 30, 35, 40, 45, 50]:
     #   speed4 = fc.Speed(speed_val)
