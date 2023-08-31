@@ -23,7 +23,7 @@ def turn_right():
   # turn 90 degree
   # turn right parameters
   fc.turn_right(20)
-  time.sleep(1.10)
+  time.sleep(1.20)
   fc.stop()
 
 
