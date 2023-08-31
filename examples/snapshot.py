@@ -151,7 +151,7 @@ def move_forward(x:int):
   print('target_time: ',target_time)
   speed = speed4()
   # print('speed: ',speed)
-  dist += speed * 0.1
+  dist += speed * target_time
   print("%scm/s"%speed)
   speed4.deinit()
   print('target dist: ',x, ' actual distance:  ',dist)
