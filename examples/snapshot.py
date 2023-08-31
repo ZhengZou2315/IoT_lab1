@@ -16,14 +16,14 @@ def turn_left():
   # turn 90 degree
   # turn left parameters
   fc.turn_left(20)
-  time.sleep(1.3)
+  time.sleep(1.4)
   fc.stop()
 
 def turn_right():
   # turn 90 degree
   # turn right parameters
   fc.turn_right(20)
-  time.sleep(1.3)
+  time.sleep(1.4)
   fc.stop()
 
 
@@ -318,8 +318,8 @@ def main():
 
 if __name__ == "__main__":
   try: 
-    main()
-    # move_forward(5) 
+    # main()
+    move_forward(10) 
     # turn_left()
     cur_map = np.zeros((200, 200))
     # route = get_path(100, 0, cur_map, 20, 80)
