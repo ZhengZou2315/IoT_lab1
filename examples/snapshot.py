@@ -179,41 +179,43 @@ def move_x(x:int, next_x:int, cur_dir:str):
   return cur_dir
 
 def move_y(y:int, next_y:int, cur_dir:str):
-    diff = next_y - y
-    if cur_dir == 'N':
-      if diff > 0:
-        move_forward(abs(diff))
-      else:
-        cur_dir = 'S'
-        turn_left()
-        turn_left()
-        move_forward(abs(diff))
-    elif cur_dir == 'S':
-      if diff > 0:
-        cur_dir = 'N'
-        turn_left()
-        turn_left()
-        move_forward(abs(diff))
-      else:
-        move_forward(abs(diff))
-    elif cur_dir == 'E':
-      if diff > 0:
-        turn_left()
-        cur_dir = 'N'
-        move_forward(abs(diff))
-      else:
-        turn_right()
-        cur_dir = 'S'
-        move_forward(abs(diff))
-    elif cur_dir == 'W':
-      if diff > 0:
-        turn_right()
-        cur_dir = 'N'
-        move_forward(abs(diff))
-      else:
-        turn_left()
-        cur_dir = 'S'
-        move_forward(abs(diff))
+  diff = next_y - y
+  if cur_dir == 'N':
+    if diff > 0:
+      move_forward(abs(diff))
+    else:
+      cur_dir = 'S'
+      turn_left()
+      turn_left()
+      move_forward(abs(diff))
+  elif cur_dir == 'S':
+    if diff > 0:
+      cur_dir = 'N'
+      turn_left()
+      turn_left()
+      move_forward(abs(diff))
+    else:
+      move_forward(abs(diff))
+  elif cur_dir == 'E':
+    if diff > 0:
+      turn_left()
+      cur_dir = 'N'
+      move_forward(abs(diff))
+    else:
+      turn_right()
+      cur_dir = 'S'
+      move_forward(abs(diff))
+  elif cur_dir == 'W':
+    if diff > 0:
+      turn_right()
+      cur_dir = 'N'
+      move_forward(abs(diff))
+    else:
+      turn_left()
+      cur_dir = 'S'
+      move_forward(abs(diff))
+  return cur_dir
+    
 
 
 def move(x:int, y:int, next_x:int, next_y:int, cur_dir:str):
