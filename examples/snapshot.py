@@ -90,7 +90,7 @@ def make_map(x:int, y:int, cur_dir: str, scan_list: list):
       continue
       # cutoff(i),cutoff(j)
     coordinates.append((int(i),int(j)))
-    # print('In make map: angle is:', cur_angle, '  coordinates:\n',coordinates)
+    print('In make map: angle is:', cur_angle, '  coordinates:\n',coordinates)
   if not coordinates:
     return cur_map
 
@@ -288,8 +288,8 @@ def main():
   not_reached = True
   # destination coordinate (200, 200)
   dest_x,dest_y = 199, 199
-  # origin (100, 0)
-  x,y = 100, 0
+  # origin (100, 50)
+  x,y = 100, 50
   cur_dir = 'N'
   cur_map = np.zeros((200, 200))
 
