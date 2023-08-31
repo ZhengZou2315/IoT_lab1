@@ -227,7 +227,7 @@ def move_forward(x:int):
   speed4 = fc.Speed(speed_val)
   speed4.start()
   dist = 0
-  fc.forward(40)
+  fc.forward(60)
   target_time = x/float(speed_val)
   interval_count = int(target_time / time_interval)
   print('target_time: ',target_time,'  interval count:', interval_count)
