@@ -141,7 +141,20 @@ def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
     temp.pop()
 
 def move_forward(x:int):
-  pass
+  speed_val = 25
+  speed4 = fc.Speed(speed_val)
+  speed4.start()
+  x = 0
+  fc.forward(20)
+  target_time = x/speed_val
+  time.sleep(target_time)
+  print('target_time: ',target_time)
+  speed = speed4()
+  # print('speed: ',speed)
+  x += speed * 0.1
+  print("%scm/s"%speed)
+  speed4.deinit()
+  print('moved distance:  ',x)
    
 def move_x(x:int, next_x:int, cur_dir:str):
   diff = next_x - x
@@ -249,20 +262,8 @@ def main():
 if __name__ == "__main__":
   try: 
       # main()
-    speed4 = fc.Speed(25)
-    speed4.start()
-    x = 0
-    fc.forward(20)
-    for i in range(20):
-        time.sleep(0.1)
-        speed = speed4()
-        print('speed: ',speed)
-        x += speed * 0.1
-        print("%scm/s"%speed)
-
-    speed4.deinit()
-    print('x:  ',x)
-    
+    # it is reasonable to move 3cm as a step, 0.12 second.
+    move_forward(10) 
 
    
   finally: 
