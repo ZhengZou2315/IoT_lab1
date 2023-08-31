@@ -150,7 +150,6 @@ def move_forward(x:int):
   time.sleep(target_time)
   print('target_time: ',target_time)
   speed = speed4()
-  # print('speed: ',speed)
   dist += speed * target_time
   print("%scm/s"%speed)
   speed4.deinit()
@@ -265,7 +264,7 @@ if __name__ == "__main__":
   try: 
       # main()
     # it is reasonable to move 3cm as a step, 0.12 second.
-    move_forward(100) 
+    move_forward(10) 
 
    
   finally: 
