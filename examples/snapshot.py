@@ -69,22 +69,26 @@ def make_map(x:int, y:int, cur_dir: str, scan_list: list):
   cur_map = np.zeros((200, 200))
   coordinates = []
   for angle,dist in scan_list:
-    if dist == -2:
+    if dist < 0 or dist > 100:
       continue
     cur_angle = (angle+90) / 180 * math.pi
     print('before angle:',angle,'  after current angle:',cur_angle,'  dist:',dist)
+
     if cur_dir == 'N':
-      i = cutoff(x + dist * math.cos(cur_angle))
-      j = cutoff(y + dist * math.sin(cur_angle))
+      i = x + dist * math.cos(cur_angle)
+      j = y + dist * math.sin(cur_angle)
     elif cur_dir == 'S':
-      i = cutoff(x - dist * math.cos(cur_angle))
-      j = cutoff(y - dist * math.sin(cur_angle))
+      i = x - dist * math.cos(cur_angle)
+      j = y - dist * math.sin(cur_angle)
     elif cur_dir == 'E':
-      i = cutoff(x + dist * math.sin(cur_angle))
-      j = cutoff(y - dist * math.cos(cur_angle))
+      i = x + dist * math.sin(cur_angle)
+      j = y - dist * math.cos(cur_angle)
     elif cur_dir == 'W':
-      i = cutoff(x - dist * math.sin(cur_angle))
-      j = cutoff(y + dist * math.cos(cur_angle))
+      i = x - dist * math.sin(cur_angle)
+      j = y + dist * math.cos(cur_angle)
+    if i < 0 or i >= 200 or j < 0 or j >= 200:
+      continue
+      # cutoff(i),cutoff(j)
     coordinates.append((i,j))
     # print('In make map: angle is:', cur_angle, '  coordinates:\n',coordinates)
   if not coordinates:
