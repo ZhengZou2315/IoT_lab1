@@ -89,7 +89,7 @@ def make_map(x:int, y:int, cur_dir: str, scan_list: list):
     if i < 0 or i >= 200 or j < 0 or j >= 200:
       continue
       # cutoff(i),cutoff(j)
-    coordinates.append((i,j))
+    coordinates.append((int(i),int(j)))
     # print('In make map: angle is:', cur_angle, '  coordinates:\n',coordinates)
   if not coordinates:
     return cur_map
