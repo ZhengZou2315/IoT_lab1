@@ -263,7 +263,7 @@ if __name__ == "__main__":
   try: 
       # main()
     # it is reasonable to move 3cm as a step, 0.12 second.
-    move_forward(10) 
+    move_forward(100) 
 
    
   finally: 
