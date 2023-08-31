@@ -85,7 +85,7 @@ def make_map(x:int, y:int, cur_dir: str, scan_list: list):
       i = cutoff(x - dist * math.sin(angle))
       j = cutoff(y + dist * math.cos(angle))
     coordinates.append((i,j))
-  
+  print('In make map: angle is:' angle, '  coordinates:\n',coordinates)
   if not coordinates:
     return cur_map
 
