@@ -319,8 +319,8 @@ def main():
 
 if __name__ == "__main__":
   try: 
-    # main()
-    move_forward(10) 
+    main()
+    # move_forward(10) 
     # turn_left()
     cur_map = np.zeros((200, 200))
     # route = get_path(100, 0, cur_map, 20, 80)
