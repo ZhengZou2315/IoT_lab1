@@ -72,6 +72,7 @@ def make_map(x:int, y:int, cur_dir: str, scan_list: list):
     if dist == -2:
       continue
     angle = (angle+90) / 180 * math.pi
+    print('before angle:',angle,'  after angle:',angle,'  dist:',dist)
     if cur_dir == 'N':
       i = cutoff(x + dist * math.cos(angle))
       j = cutoff(y + dist * math.sin(angle))
