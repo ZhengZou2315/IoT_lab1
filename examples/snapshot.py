@@ -223,11 +223,11 @@ def move(x:int, y:int, next_x:int, next_y:int, cur_dir:str):
 
 def move_forward(x:int):
   time_interval = 0.1
-  speed_val = 25
+  speed_val = 30
   speed4 = fc.Speed(speed_val)
   speed4.start()
   dist = 0
-  fc.forward(25)
+  fc.forward(speed_val)
   target_time = x/float(speed_val)
   interval_count = int(target_time / time_interval)
   print('target_time: ',target_time,'  interval count:', interval_count)
