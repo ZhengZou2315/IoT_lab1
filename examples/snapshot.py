@@ -251,7 +251,7 @@ def move(x:int, y:int, next_x:int, next_y:int, cur_dir:str):
 
 def move_forward(x:int):
   time_interval = 0.1
-  speed_val = 15
+  speed_val = 10
   speed4 = fc.Speed(speed_val)
   speed4.start()
   dist = 0
