@@ -35,8 +35,8 @@ def get_scan_list():
     scan_list = fc.scan_step(35)
 
 def cutoff(val:float):
-  # make the value between [0,200]
-  return min(200, max(0, int(val)))
+  # make the value between [0,200)
+  return min(199, max(0, int(val)))
 
 def fill(point:tuple, cur_map):
   margin = 4
@@ -112,7 +112,7 @@ def get_next_hops(x:int, y:int, cur_map, dest_x:int, dest_y:int, cnt:int):
       for dx,dy in dirs:
         new_x = dx + cur_x
         new_y = dy + cur_y
-        if new_x < 0 or new_x > 200 or new_y < 0 or new_y > 200:
+        if new_x < 0 or new_x >= 200 or new_y < 0 or new_y >= 200:
            continue
         if (new_x,new_y) in visited:
            continue
