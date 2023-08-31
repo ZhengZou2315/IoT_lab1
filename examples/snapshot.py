@@ -51,7 +51,7 @@ def fill(point:tuple, cur_map):
 
 def get_connected_points(p1, p2):
   points = []
-  dist = math.sqrt((p2[0]-p1[0])^2 + (p2[1]-p1[1])^2)
+  dist = math.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
   # distance threshold set as 25 cm.
   if dist > 25:
       return [p1,p2]
@@ -256,7 +256,7 @@ def move_forward(x:int):
   fc.stop()
 
 def is_reached(x,y,dest_x,dest_y):
-  dist = math.sqrt((x-dest_x)^2+(y-dest_y)^2)
+  dist = math.sqrt((x-dest_x)**2+(y-dest_y)**2)
   return dist <= 20
 
 def main():
