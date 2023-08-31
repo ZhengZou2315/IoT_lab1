@@ -141,6 +141,7 @@ def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
     temp.pop()
 
 def move_forward(x:int):
+  time_interval = 0.1
   speed_val = 25
   speed4 = fc.Speed(speed_val)
   speed4.start()
@@ -149,7 +150,7 @@ def move_forward(x:int):
   target_time = x/float(speed_val)
   interval_count = int(target_time / time_interval)
   print('target_time: ',target_time)
-  time_interval = 0.1
+  
   for _ in range(interval_count):
     time.sleep(target_time)
     speed = speed4()
