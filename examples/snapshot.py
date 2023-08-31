@@ -31,6 +31,7 @@ def get_scan_list():
   scan_list = False
   while not scan_list:
     scan_list = fc.scan_step(35)
+  return scan_list
 
 
 def cutoff(val:float):
