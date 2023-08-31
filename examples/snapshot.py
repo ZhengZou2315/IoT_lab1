@@ -285,8 +285,10 @@ if __name__ == "__main__":
     # move_forward(5) 
     # turn_left()
     cur_map = np.zeros((200, 200))
-    route = get_path(100, 0, cur_map, 20, 80)
-    print('route:\n',route)
+    # route = get_path(100, 0, cur_map, 20, 80)
+    # print('route:\n',route)
+
+    move_x(10, 20, 'E')
    
   finally: 
       fc.stop()
