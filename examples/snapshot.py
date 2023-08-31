@@ -288,8 +288,8 @@ if __name__ == "__main__":
     # route = get_path(100, 0, cur_map, 20, 80)
     # print('route:\n',route)
 
-    move_x(30, 20, 'W')
-    # move_y(10, 20, 'S')
+    # move_x(30, 20, 'W')
+    move_y(10, 20, 'W')
    
   finally: 
       fc.stop()
