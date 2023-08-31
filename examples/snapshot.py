@@ -146,7 +146,7 @@ def move_forward(x:int):
   speed4.start()
   x = 0
   fc.forward(20)
-  target_time = x/speed_val
+  target_time = x/float(speed_val)
   time.sleep(target_time)
   print('target_time: ',target_time)
   speed = speed4()
@@ -155,6 +155,8 @@ def move_forward(x:int):
   print("%scm/s"%speed)
   speed4.deinit()
   print('moved distance:  ',x)
+  # speed4.deinit()
+  fc.stop()
    
 def move_x(x:int, next_x:int, cur_dir:str):
   diff = next_x - x
