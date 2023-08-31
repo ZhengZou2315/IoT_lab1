@@ -16,7 +16,7 @@ def turn_left():
   # turn 90 degree
   # turn left parameters
   fc.turn_left(20)
-  time.sleep(1.4)
+  time.sleep(1.35)
   fc.stop()
 
 def turn_right():
@@ -319,7 +319,7 @@ def main():
 
 if __name__ == "__main__":
   try: 
-    main()
+    # main()
     move_forward(10) 
     # turn_left()
     cur_map = np.zeros((200, 200))
