@@ -149,6 +149,8 @@ def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
 def move_x(x:int, next_x:int, cur_dir:str):
   print('\nIn move_x, cur_dir:{cur_dir}, from {x} to {next_x}'.format(cur_dir=cur_dir,x=x,next_x=next_x))
   diff = next_x - x
+  if diff == 0:
+    return cur_dir
   if cur_dir == 'N':
     if diff > 0:
       turn_right()
@@ -191,6 +193,8 @@ def move_x(x:int, next_x:int, cur_dir:str):
 def move_y(y:int, next_y:int, cur_dir:str):
   print('\nIn move_y, cur_dir:{cur_dir}, from {y} to {next_y}'.format(cur_dir=cur_dir,y=y,next_y=next_y))
   diff = next_y - y
+  if diff == 0:
+    return cur_dir
   if cur_dir == 'N':
     if diff > 0:
       move_forward(abs(diff))
