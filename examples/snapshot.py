@@ -289,7 +289,7 @@ if __name__ == "__main__":
     # print('route:\n',route)
 
     # move_x(30, 20, 'W')
-    move_y(20, 10, 'N')
+    move_y(20, 10, 'W')
    
   finally: 
       fc.stop()
