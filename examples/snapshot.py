@@ -29,7 +29,7 @@ def turn_right():
 
 def get_scan_list():
   scan_list = False
-  while not scan_list:
+  while not scan_list or len(scan_list) < 10:
     scan_list = fc.scan_step(35)
   return scan_list
 
@@ -263,7 +263,7 @@ def main():
   # The move area is only 200 * 200.
   not_reached = True
   # destination coordinate (200, 200)
-  dest_x,dest_y = 200, 200
+  dest_x,dest_y = 199, 199
   # origin (100, 0)
   x,y = 100, 0
   cur_dir = 'N'
