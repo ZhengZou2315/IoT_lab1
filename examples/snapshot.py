@@ -130,7 +130,7 @@ def get_path(x:int, y:int, cur_map, dest_x:int, dest_y:int):
   # print('node_to_parents:\n',node_to_parents)
   get_paths(dest_x,dest_y,node_to_parents,x,y, temp, paths)
   paths = sorted(paths, key = lambda x: len(x))
-  return paths[0]
+  return reversed(paths[0])
 
 
 def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
@@ -282,6 +282,7 @@ def main():
       #     x,y = to_x,to_y
       idx = min(10, len(path)-1)
       next_x,next_y = path[idx]
+      print('next x:',next_x,'   next_y:',next_y)
       cur_dir = move(x,y,next_x,next_y,cur_dir)
 
       if is_reached(x,y,dest_x,dest_y):
