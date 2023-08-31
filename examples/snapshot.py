@@ -152,7 +152,7 @@ def move_forward(x:int):
   print('target_time: ',target_time)
   
   for _ in range(interval_count):
-    time.sleep(target_time)
+    time.sleep(time_interval)
     speed = speed4()
     dist += speed * time_interval
     print("%scm/s"%speed)
