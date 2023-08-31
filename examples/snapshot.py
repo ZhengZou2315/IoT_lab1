@@ -146,7 +146,7 @@ def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
   
 
 def move_x(x:int, next_x:int, cur_dir:str):
-  print('In move_x, cur_dir:{cur_dir}, from {x} to {next_x}'.format(cur_dir=cur_dir,x=x,next_x=next_x))
+  print('\nIn move_x, cur_dir:{cur_dir}, from {x} to {next_x}'.format(cur_dir=cur_dir,x=x,next_x=next_x))
   diff = next_x - x
   if cur_dir == 'N':
     if diff > 0:
@@ -182,12 +182,13 @@ def move_x(x:int, next_x:int, cur_dir:str):
       move_forward(abs(diff))
     else:
       move_forward(abs(diff))
-  print('Complete move_x, cur_dir is: ',cur_dir)
+  print('\nComplete move_x, cur_dir is: ',cur_dir)
+  print('\n\n')
   return cur_dir
 
 
 def move_y(y:int, next_y:int, cur_dir:str):
-  print('In move_y, cur_dir:{cur_dir}, from {y} to {next_y}'.format(cur_dir=cur_dir,y=y,next_y=next_y))
+  print('\nIn move_y, cur_dir:{cur_dir}, from {y} to {next_y}'.format(cur_dir=cur_dir,y=y,next_y=next_y))
   diff = next_y - y
   if cur_dir == 'N':
     if diff > 0:
@@ -223,15 +224,17 @@ def move_y(y:int, next_y:int, cur_dir:str):
       turn_left()
       cur_dir = 'S'
       move_forward(abs(diff))
-  print('Complete move_y, cur_dir is: ',cur_dir)
+  print('\nComplete move_y, cur_dir is: ',cur_dir)
+  print('\n\n')
   return cur_dir
     
 
 def move(x:int, y:int, next_x:int, next_y:int, cur_dir:str):
-  print('In move, cur_dir is {cur_dir}, start from ({x},{y}) to ({next_x},{next_y})'.format(x=x,y=y,next_x=next_x,next_y=next_y,cur_dir=cur_dir))
+  print('\nIn move, cur_dir is {cur_dir}, start from ({x},{y}) to ({next_x},{next_y})'.format(x=x,y=y,next_x=next_x,next_y=next_y,cur_dir=cur_dir))
   cur_dir = move_x(x,next_x, cur_dir)
   cur_dir = move_y(y,next_y, cur_dir)
-  print('Complete Move!')
+  print('\nComplete Move!')
+  print('\n\n')
   return cur_dir
 
 def move_forward(x:int):
