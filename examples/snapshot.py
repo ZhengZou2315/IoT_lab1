@@ -297,7 +297,7 @@ if __name__ == "__main__":
     # print('route:\n',route)
 
     # move_x(30, 20, 'W')
-    cur_dir = move_y(20, 10, 'W')
+    # cur_dir = move_y(20, 10, 'W')
 
     cur_dir = move(0,0,10,20,'S')
     print('cur_dir: ',cur_dir)
