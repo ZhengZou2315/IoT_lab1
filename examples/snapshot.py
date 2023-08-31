@@ -272,9 +272,10 @@ def main():
 
   while not_reached:
       cur_scan_list = get_scan_list()
+      print('cur_scan_list:\n',cur_scan_list)
       # size: 200 * 200
       cur_map = make_map(x, y, cur_dir, cur_scan_list)
-      next_steps = 30
+      print('cur_map:',cur_map)
       # each step is 1cm, get the next 30 small steps (3 large steps) before update the map.
       path = get_path(x, y, cur_map, dest_x, dest_y)
       # for to_x,to_y in next_hops:
