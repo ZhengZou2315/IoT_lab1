@@ -95,7 +95,7 @@ def make_map(x:int, y:int, cur_dir: str, scan_list: list):
   return cur_map
 
    
-def get_next_hops(x:int, y:int, cur_map, dest_x:int, dest_y:int, cnt:int):
+def get_path(x:int, y:int, cur_map, dest_x:int, dest_y:int):
   # use BFS to get the best routes (a series of nodes) and just return next cnt hops
   # e.g.[(x1,y1),(x2,y2),(x3,y3)]
   node_to_parents = defaultdict(list)
@@ -243,6 +243,10 @@ def move_forward(x:int):
   # speed4.deinit()
   fc.stop()
 
+def is_reached(x,y,dest_x,dest_y):
+  dist = math.sqrt((x-dest_x)^2+(y-dest_y)^2)
+  return dist <= 20
+
 def main():
   # The move area is only 200 * 200.
   not_reached = True
@@ -259,13 +263,19 @@ def main():
       cur_map = make_map(x, y, cur_dir, cur_scan_list)
       next_steps = 30
       # each step is 1cm, get the next 30 small steps (3 large steps) before update the map.
-      next_hops = get_next_hops(x, y, cur_map, dest_x, dest_y, next_steps)
-      for to_x,to_y in next_hops:
-          cur_dir = move(x,y,to_x,to_y,cur_dir)
-          x,y = to_x,to_y
+      path = get_path(x, y, cur_map, dest_x, dest_y)
+      # for to_x,to_y in next_hops:
+      #     cur_dir = move(x,y,to_x,to_y,cur_dir)
+      #     x,y = to_x,to_y
+      idx = min(10, len(path)-1)
+      next_x,next_y = path[idx]
+      cur_dir = move(x,y,next_x,next_y,cur_dir)
+
       if is_reached(x,y,dest_x,dest_y):
+          print('DESTINATION IS REACHED!!!!!! CONGRATULATIONS!!!!!')
           not_reached = False
-  
+
+      x,y = next_x,next_y
   print('Destination is reached!!!')
 
 
@@ -275,7 +285,7 @@ if __name__ == "__main__":
     # move_forward(5) 
     # turn_left()
     cur_map = np.zeros((200, 200))
-    route = get_next_hops(100, 0, cur_map, 20, 80, 30)
+    route = get_path(100, 0, cur_map, 20, 80, 30)
     print('route:\n',route)
    
   finally: 
