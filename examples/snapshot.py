@@ -130,7 +130,8 @@ def get_path(x:int, y:int, cur_map, dest_x:int, dest_y:int):
   # print('node_to_parents:\n',node_to_parents)
   get_paths(dest_x,dest_y,node_to_parents,x,y, temp, paths)
   paths = sorted(paths, key = lambda x: len(x))
-  return reversed(paths[0])
+  paths[0].reverse()
+  return paths[0]
 
 
 def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
