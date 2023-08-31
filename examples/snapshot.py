@@ -139,29 +139,7 @@ def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
     temp.append(parent)
     get_paths(parent[0], parent[1], node_to_parents, dest_x, dest_y, temp, paths)
     temp.pop()
-
-def move_forward(x:int):
-  time_interval = 0.1
-  speed_val = 25
-  speed4 = fc.Speed(speed_val)
-  speed4.start()
-  dist = 0
-  fc.forward(20)
-  target_time = x/float(speed_val)
-  interval_count = int(target_time / time_interval)
-  print('target_time: ',target_time,'  interval count:', interval_count)
   
-  for _ in range(interval_count):
-    time.sleep(time_interval)
-    speed = speed4()
-    dist += speed * time_interval
-    print("%scm/s"%speed)
-
-  speed4.deinit()
-  print('target dist: ',x, ' actual distance:  ',dist)
-  # speed4.deinit()
-  fc.stop()
-   
 def move_x(x:int, next_x:int, cur_dir:str):
   diff = next_x - x
   if cur_dir == 'N':
@@ -243,6 +221,27 @@ def move(x:int, y:int, next_x:int, next_y:int, cur_dir:str):
   cur_dir = move_y(y,next_y, cur_dir)
   return cur_dir
 
+def move_forward(x:int):
+  time_interval = 0.1
+  speed_val = 25
+  speed4 = fc.Speed(speed_val)
+  speed4.start()
+  dist = 0
+  fc.forward(20)
+  target_time = x/float(speed_val)
+  interval_count = int(target_time / time_interval)
+  print('target_time: ',target_time,'  interval count:', interval_count)
+  
+  for _ in range(interval_count):
+    time.sleep(time_interval)
+    speed = speed4()
+    dist += speed * time_interval
+    print("%scm/s"%speed)
+
+  speed4.deinit()
+  print('target dist: ',x, ' actual distance:  ',dist)
+  # speed4.deinit()
+  fc.stop()
 
 def main():
   not_reached = True
