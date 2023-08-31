@@ -275,7 +275,7 @@ if __name__ == "__main__":
     # move_forward(5) 
     # turn_left()
     cur_map = np.zeros((200, 200))
-    next_hops = get_next_hops(100, 0, cur_map, 120, 50, 30)
+    route = get_next_hops(100, 0, cur_map, 120, 50, 30)
     print('route:\n',route)
    
   finally: 
