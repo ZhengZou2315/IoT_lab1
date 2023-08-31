@@ -16,14 +16,14 @@ def turn_left():
   # turn 90 degree
   # turn left parameters
   fc.turn_left(20)
-  time.sleep(1.7)
+  time.sleep(1.5)
   fc.stop()
 
 def turn_right():
   # turn 90 degree
   # turn right parameters
   fc.turn_right(20)
-  time.sleep(1.7)
+  time.sleep(1.5)
   fc.stop()
 
 
@@ -91,6 +91,7 @@ def make_map(x:int, y:int, cur_dir: str, scan_list: list):
     return cur_map
 
   cur_map = fill(coordinates[0], cur_map)
+  print('After initial fill, there are many ones in the map:',count_ones(cur_map),'  coordinates:\n',coordinates)
   for idx in range(1, len(coordinates)):
     points = get_connected_points(coordinates[idx-1],coordinates[idx])
     for point in points:
