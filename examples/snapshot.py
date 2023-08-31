@@ -149,7 +149,7 @@ def move_forward(x:int):
   fc.forward(20)
   target_time = x/float(speed_val)
   interval_count = int(target_time / time_interval)
-  print('target_time: ',target_time)
+  print('target_time: ',target_time,'  interval count:', interval_count)
   
   for _ in range(interval_count):
     time.sleep(time_interval)
