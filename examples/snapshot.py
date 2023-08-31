@@ -127,8 +127,7 @@ def get_path(x:int, y:int, cur_map, dest_x:int, dest_y:int):
   
   paths = []
   temp = [(dest_x, dest_y)]
-  # seen = dict()
-  # seen.add((dest_x, dest_y))
+  print('node_to_parents:\n',node_to_parents)
   get_paths(dest_x,dest_y,node_to_parents,x,y, temp, paths)
   paths = sorted(paths, key = lambda x: len(x))
   return paths[0]
