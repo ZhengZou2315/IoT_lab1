@@ -40,7 +40,7 @@ def cutoff(val:float):
 
 
 def fill(point:tuple, cur_map):
-  margin = 4
+  margin = 2
   for dx in range(-margin, margin+1, 1):
     for dy in range(-margin, margin+1, 1):
       x = cutoff(point[0] + dx)
@@ -86,7 +86,7 @@ def make_map(x:int, y:int, cur_dir: str, scan_list: list):
       i = cutoff(x - dist * math.sin(cur_angle))
       j = cutoff(y + dist * math.cos(cur_angle))
     coordinates.append((i,j))
-    print('In make map: angle is:', cur_angle, '  coordinates:\n',coordinates)
+    # print('In make map: angle is:', cur_angle, '  coordinates:\n',coordinates)
   if not coordinates:
     return cur_map
 
