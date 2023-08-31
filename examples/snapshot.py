@@ -244,17 +244,22 @@ def move_forward(x:int):
   fc.stop()
 
 def main():
+  # The move area is only 200 * 200.
   not_reached = True
+  # destination coordinate (200, 200)
   dest_x,dest_y = 200, 200
+  # origin (100, 0)
   x,y = 100, 0
   cur_dir = 'N'
   cur_map = np.zeros((200, 200))
 
   while not_reached:
       cur_scan_list = get_scan_list()
-      # 200 * 200
+      # size: 200 * 200
       cur_map = make_map(x, y, cur_dir, cur_scan_list)
-      next_hops = get_next_hops(x, y, cur_map, dest_x, dest_y, 3)
+      next_steps = 30
+      # each step is 1cm, get the next 30 small steps (3 large steps) before update the map.
+      next_hops = get_next_hops(x, y, cur_map, dest_x, dest_y, next_steps)
       for to_x,to_y in next_hops:
           cur_dir = move(x,y,to_x,to_y,cur_dir)
           x,y = to_x,to_y
@@ -266,10 +271,12 @@ def main():
 
 if __name__ == "__main__":
   try: 
-      # main()
-    # it is reasonable to move 3cm as a step, 0.12 second.
+    # main()
     # move_forward(5) 
-    turn_left()
+    # turn_left()
+    cur_map = np.zeros((200, 200))
+    next_hops = get_next_hops(100, 0, cur_map, 120, 50, 30)
+    print('route:\n',route)
    
   finally: 
       fc.stop()
