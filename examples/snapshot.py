@@ -129,6 +129,7 @@ def get_path(x:int, y:int, cur_map, dest_x:int, dest_y:int):
   temp = [(dest_x, dest_y)]
   # print('node_to_parents:\n',node_to_parents)
   get_paths(dest_x,dest_y,node_to_parents,x,y, temp, paths)
+  print('Have find {cnt} paths!!!!'.format(cnt=len(paths)))
   paths = sorted(paths, key = lambda x: len(x))
   paths[0].reverse()
   return paths[0]
@@ -245,7 +246,7 @@ def move_forward(x:int):
   dist = 0
   fc.forward(speed_val)
   target_time = x/float(speed_val)
-  interval_count = int(target_time / time_interval) + 1
+  interval_count = int(target_time / time_interval) + 1 if int(target_time / time_interval) > 0 else 0
   print('target_time: ',target_time,'  interval count:', interval_count)
   
   for _ in range(interval_count):
@@ -263,6 +264,13 @@ def is_reached(x,y,dest_x,dest_y):
   dist = math.sqrt((x-dest_x)**2+(y-dest_y)**2)
   return dist <= 20
 
+def count_ones(matrix):
+  res = 0
+  for i in range(len(matrix)):
+    for j in range(len(matrix[0])):
+      res += matrix[i][j]
+  return res
+
 def main():
   # The move area is only 200 * 200.
   not_reached = True
@@ -278,7 +286,7 @@ def main():
       print('cur_scan_list:\n',cur_scan_list)
       # size: 200 * 200
       cur_map = make_map(x, y, cur_dir, cur_scan_list)
-      print('cur_map:',cur_map)
+      print('cur_map has one, the number is:',count_ones(cur_map))
       # each step is 1cm, get the next 30 small steps (3 large steps) before update the map.
       path = get_path(x, y, cur_map, dest_x, dest_y)
       # for to_x,to_y in next_hops:
