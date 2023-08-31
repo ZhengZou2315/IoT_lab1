@@ -16,14 +16,14 @@ def turn_left():
   # turn 90 degree
   # turn left parameters
   fc.turn_left(20)
-  time.sleep(1.8)
+  time.sleep(1.7)
   fc.stop()
 
 def turn_right():
   # turn 90 degree
   # turn right parameters
   fc.turn_right(20)
-  time.sleep(1.8)
+  time.sleep(1.7)
   fc.stop()
 
 
@@ -71,22 +71,22 @@ def make_map(x:int, y:int, cur_dir: str, scan_list: list):
   for angle,dist in scan_list:
     if dist == -2:
       continue
-    angle = (angle+90) / 180 * math.pi
-    print('before angle:',angle,'  after angle:',angle,'  dist:',dist)
+    cur_angle = (angle+90) / 180 * math.pi
+    print('before angle:',angle,'  after current angle:',cur_angle,'  dist:',dist)
     if cur_dir == 'N':
-      i = cutoff(x + dist * math.cos(angle))
-      j = cutoff(y + dist * math.sin(angle))
+      i = cutoff(x + dist * math.cos(cur_angle))
+      j = cutoff(y + dist * math.sin(cur_angle))
     elif cur_dir == 'S':
-      i = cutoff(x - dist * math.cos(angle))
-      j = cutoff(y - dist * math.sin(angle))
+      i = cutoff(x - dist * math.cos(cur_angle))
+      j = cutoff(y - dist * math.sin(cur_angle))
     elif cur_dir == 'E':
-      i = cutoff(x + dist * math.sin(angle))
-      j = cutoff(y - dist * math.cos(angle))
+      i = cutoff(x + dist * math.sin(cur_angle))
+      j = cutoff(y - dist * math.cos(cur_angle))
     elif cur_dir == 'W':
-      i = cutoff(x - dist * math.sin(angle))
-      j = cutoff(y + dist * math.cos(angle))
+      i = cutoff(x - dist * math.sin(cur_angle))
+      j = cutoff(y + dist * math.cos(cur_angle))
     coordinates.append((i,j))
-    print('In make map: angle is:', angle, '  coordinates:\n',coordinates)
+    print('In make map: angle is:', cur_angle, '  coordinates:\n',coordinates)
   if not coordinates:
     return cur_map
 
