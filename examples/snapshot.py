@@ -251,7 +251,7 @@ def move(x:int, y:int, next_x:int, next_y:int, cur_dir:str):
 
 def move_forward(x:int):
   time_interval = 0.1
-  speed_val = 25
+  speed_val = 15
   speed4 = fc.Speed(speed_val)
   speed4.start()
   dist = 0
@@ -320,7 +320,7 @@ def main():
 if __name__ == "__main__":
   try: 
     main()
-    # move_forward(10) 
+    move_forward(10) 
     # turn_left()
     cur_map = np.zeros((200, 200))
     # route = get_path(100, 0, cur_map, 20, 80)
