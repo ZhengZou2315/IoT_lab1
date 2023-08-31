@@ -26,17 +26,17 @@ def turn_right():
   time.sleep(1.8)
   fc.stop()
 
-def move_forward(dist: int):
-  pass
 
 def get_scan_list():
   scan_list = False
   while not scan_list:
     scan_list = fc.scan_step(35)
 
+
 def cutoff(val:float):
   # make the value between [0,200)
   return min(199, max(0, int(val)))
+
 
 def fill(point:tuple, cur_map):
   margin = 4
@@ -46,6 +46,7 @@ def fill(point:tuple, cur_map):
       y = cutoff(point[1] + dy)
       cur_map[x,y] = 1
   return cur_map
+
 
 def get_connected_points(p1, p2):
   points = []
@@ -61,6 +62,7 @@ def get_connected_points(p1, p2):
       for y in range(y_min, y_max):
           points.append((x,y))
   return points
+
 
 def make_map(x:int, y:int, cur_dir: str, scan_list: list):
   cur_map = np.zeros((200, 200))
@@ -130,6 +132,7 @@ def get_path(x:int, y:int, cur_map, dest_x:int, dest_y:int):
   paths = sorted(paths, key = lambda x: len(x))
   return paths[0]
 
+
 def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
   if cur_x == dest_x and cur_y == dest_y:
     paths.append(temp.copy())
@@ -140,6 +143,7 @@ def get_paths(cur_x, cur_y, node_to_parents, dest_x, dest_y, temp, paths):
     get_paths(parent[0], parent[1], node_to_parents, dest_x, dest_y, temp, paths)
     temp.pop()
   
+
 def move_x(x:int, next_x:int, cur_dir:str):
   print('In move_x, cur_dir:{cur_dir}, from {x} to {next_x}'.format(cur_dir=cur_dir,x=x,next_x=next_x))
   diff = next_x - x
@@ -179,6 +183,7 @@ def move_x(x:int, next_x:int, cur_dir:str):
       move_forward(abs(diff))
   print('Complete move_x, cur_dir is: ',cur_dir)
   return cur_dir
+
 
 def move_y(y:int, next_y:int, cur_dir:str):
   print('In move_y, cur_dir:{cur_dir}, from {y} to {next_y}'.format(cur_dir=cur_dir,y=y,next_y=next_y))
@@ -220,7 +225,6 @@ def move_y(y:int, next_y:int, cur_dir:str):
   print('Complete move_y, cur_dir is: ',cur_dir)
   return cur_dir
     
-
 
 def move(x:int, y:int, next_x:int, next_y:int, cur_dir:str):
   print('In move, cur_dir is {cur_dir}, start from ({x},{y}) to ({next_x},{next_y})'.format(x=x,y=y,next_x=next_x,next_y=next_y,cur_dir=cur_dir))
@@ -289,7 +293,7 @@ def main():
 
 if __name__ == "__main__":
   try: 
-    # main()
+    main()
     # move_forward(5) 
     # turn_left()
     cur_map = np.zeros((200, 200))
@@ -299,8 +303,8 @@ if __name__ == "__main__":
     # move_x(30, 20, 'W')
     # cur_dir = move_y(20, 10, 'W')
 
-    cur_dir = move(0,0,10,20,'S')
-    print('cur_dir: ',cur_dir)
+    # cur_dir = move(0,0,10,20,'S')
+    # print('cur_dir: ',cur_dir)
    
   finally: 
       fc.stop()
