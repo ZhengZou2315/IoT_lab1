@@ -194,7 +194,7 @@ def move_x(x:int, next_x:int, cur_dir:str):
       move_forward(abs(diff))
   print('\nComplete move_x, cur_dir is: ',cur_dir)
   print('\n\n')
-  return cur_dir
+  return next_x,cur_dir
 
 
 def move_y(y:int, next_y:int, cur_dir:str):
@@ -238,16 +238,16 @@ def move_y(y:int, next_y:int, cur_dir:str):
       move_forward(abs(diff))
   print('\nComplete move_y, cur_dir is: ',cur_dir)
   print('\n\n')
-  return cur_dir
+  return next_y,cur_dir
     
 
 def move(x:int, y:int, next_x:int, next_y:int, cur_dir:str):
   print('\nIn move, cur_dir is {cur_dir}, start from ({x},{y}) to ({next_x},{next_y})'.format(x=x,y=y,next_x=next_x,next_y=next_y,cur_dir=cur_dir))
-  cur_dir = move_x(x,next_x, cur_dir)
-  cur_dir = move_y(y,next_y, cur_dir)
+  x,cur_dir = move_x(x,next_x, cur_dir)
+  y,cur_dir = move_y(y,next_y, cur_dir)
   print('\nComplete Move!')
   print('\n\n')
-  return cur_dir
+  return x,y,cur_dir
 
 def move_forward(x:int):
   time_interval = 0.1
@@ -283,10 +283,28 @@ def count_ones(matrix):
       res += matrix[i][j]
   return res
 
-def determine_steps(x,y,path,idx):
-  x_diff = path[idx][0]-x
-  y_diff = path[idx][1]-y
+# def determine_steps(x,y,path,idx):
+#   x_diff = path[idx][0]-x
+#   y_diff = path[idx][1]-y
 
+def block_in_front(scan_list):
+  for pair in scan_list:
+    if pair[0] == 0 and pair[1] <= 30:
+      return True
+  return False
+
+def pass_the_block(x,y,cur_dir,steps):
+  if cur_dir == 'N' or cur_dir == 'S':
+    if x < 100:
+      x,y,cur_dir = move(x,y,x+steps,y,cur_dir)
+    else:
+      x,y,cur_dir = move(x,y,x-steps,y,cur_dir)
+  else:
+    if y < 100:
+      x,y,cur_dir = move(x,y,x,y+steps,cur_dir)
+    else:
+      x,y,cur_dir = move(x,y,x,y-steps,cur_dir)
+  return x,y,cur_dir
 
 def main():
   # The move area is only 200 * 200.
@@ -301,6 +319,10 @@ def main():
   while not_reached:
       cur_scan_list = get_scan_list()
       print('cur_scan_list:\n',cur_scan_list)
+      if block_in_front(cur_scan_list):
+        # by default, move 30
+        x,y,cur_dir = pass_the_block(x,y,cur_dir,30)
+        continue
       # size: 200 * 200
       cur_map = make_map(x, y, cur_dir, cur_scan_list)
       print('cur_map has one, the number is:',count_ones(cur_map))
@@ -312,15 +334,14 @@ def main():
       idx = min(10, len(path)-1)
       # idx = determine_steps(x,y,path,10)
       next_x,next_y = path[idx]
+
+      not_reached = not is_reached(x,y,dest_x,dest_y)
+
       print('next x:',next_x,'   next_y:',next_y)
-      cur_dir = move(x,y,next_x,next_y,cur_dir)
+      x,y,cur_dir = move(x,y,next_x,next_y,cur_dir)
 
-      if is_reached(x,y,dest_x,dest_y):
-          print('DESTINATION IS REACHED!!!!!! CONGRATULATIONS!!!!!')
-          not_reached = False
-
-      x,y = next_x,next_y
   print('Destination is reached!!!')
+  print('DESTINATION IS REACHED!!!!!! CONGRATULATIONS!!!!!')
 
 
 if __name__ == "__main__":
