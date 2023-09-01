@@ -429,7 +429,7 @@ def main():
   cur_map = np.zeros((200, 200))
 
   while not_reached:
-      while take_snapshot():
+      if take_snapshot():
         time.sleep(2.19)
       cur_scan_list = get_scan_list()
       print('cur_scan_list:\n',cur_scan_list)
