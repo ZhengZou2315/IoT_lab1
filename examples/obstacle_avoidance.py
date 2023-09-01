@@ -8,7 +8,7 @@ def main():
         if not scan_list:
             continue
 
-        tmp = scan_list[4:7]
+        tmp = scan_list[2:9]
         print('scan_list:',scan_list)
         tmp = [dist for angle,dist in tmp]
         # print('tmp:')
