@@ -289,7 +289,7 @@ def count_ones(matrix):
 
 def block_in_front(scan_list):
   for pair in scan_list:
-    if pair[0] == 0 and pair[1] <= 30:
+    if pair[0] == 0 and pair[1] <= 30 and pair[1] > 0:
       return True
   return False
 
