@@ -128,14 +128,14 @@ def turn_left():
   # turn 90 degree
   # turn left parameters
   fc.turn_left(20)
-  time.sleep(1.19)
+  time.sleep(1.23)
   fc.stop()
 
 def turn_right():
   # turn 90 degree
   # turn right parameters
   fc.turn_right(20)
-  time.sleep(1.19)
+  time.sleep(1.23)
   fc.stop()
 
 
