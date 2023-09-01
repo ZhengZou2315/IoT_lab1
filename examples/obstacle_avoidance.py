@@ -10,6 +10,8 @@ def main():
 
         tmp = scan_list[2:8]
         print('scan_list:',scan_list)
+        tmp = [dist for angle,dist in tmp]
+        # print('tmp:')
         print(tmp)
         if tmp != [-2,-2,-2,-2,-2,-2]:
             fc.turn_right(speed)
