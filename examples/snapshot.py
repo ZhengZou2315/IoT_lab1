@@ -152,7 +152,7 @@ def cutoff(val:float):
 
 
 def fill(point:tuple, cur_map):
-  margin = 10
+  margin = 4
   for dx in range(-margin, margin+1, 1):
     for dy in range(-margin, margin+1, 1):
       x = cutoff(point[0] + dx)
