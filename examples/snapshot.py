@@ -74,22 +74,15 @@ def take_snapshot() -> None:
     counter += 1
     print('counter: ', counter)
     image = cv2.flip(image, 1)
-    # print('image:\n',image)
 
-    # print(' ')
     # Convert the image from BGR to RGB as required by the TFLite model.
     rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    # print('rgb_image:\n',rgb_image)
-    # print(' ')
+
     # Create a TensorImage object from the RGB image.
     input_tensor = vision.TensorImage.create_from_array(rgb_image)
-    # print('input_tensor:\n',input_tensor)
-    # print(' ')
     # Run object detection estimation using the model.
     detection_result = detector.detect(input_tensor)
-    # print('detection_result:\n',detection_result)
-    # print(' ')
-    # print(' ')
+
     detections = detection_result.detections
     for detection in detections:
       # print('detection:  ',detection)
