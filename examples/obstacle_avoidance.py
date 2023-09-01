@@ -17,7 +17,7 @@ def main():
         #     fc.turn_right(speed)
         # else:
         #     fc.forward(speed)
-        if any([dist < 10 for dist in tmp]):
+        if any([dist < 10 and dist > 0 for dist in tmp]):
             fc.turn_right(speed)
         else:
             fc.forward(speed)
