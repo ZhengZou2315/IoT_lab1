@@ -93,28 +93,6 @@ def take_snapshot() -> None:
           print('stop sign identified!!!')
           return True
     return False
-    # Draw keypoints and edges on input image
-    # image = utils.visualize(image, detection_result)
-
-    # Calculate the FPS
-    # if counter % fps_avg_frame_count == 0:
-    #   end_time = time.time()
-    #   fps = fps_avg_frame_count / (end_time - start_time)
-    #   start_time = time.time()
-
-    # Show the FPS
-    # fps_text = 'FPS = {:.1f}'.format(fps)
-    # text_location = (left_margin, row_size)
-    # cv2.putText(image, fps_text, text_location, cv2.FONT_HERSHEY_PLAIN,
-    #             font_size, text_color, font_thickness)
-
-    # Stop the program if the ESC key is pressed.
-    # if cv2.waitKey(1) == 27:
-    #   break
-    # cv2.imshow('object_detector', image)
-
-  # cap.release()
-  # cv2.destroyAllWindows()
 
 speed = 30
 
@@ -122,7 +100,6 @@ speed = 30
   # with picamera.PiCamera() as camera:
   #     # do something with the camera
   #     camera.capture('test10.jpg')
-
 
 def turn_left():
   # turn 90 degree
@@ -135,7 +112,7 @@ def turn_right():
   # turn 90 degree
   # turn right parameters
   fc.turn_right(20)
-  time.sleep(1.23)
+  time.sleep(1.20)
   fc.stop()
 
 
@@ -410,12 +387,12 @@ def pass_the_block(x,y,cur_dir,steps):
     if x < 100:
       x,y,cur_dir = move(x,y,x+steps,y,cur_dir)
     else:
-      x,y,cur_dir = move(x,y,x-steps,y,cur_dir)
+      x,y,cur_dir = move(x,y,x+steps,y,cur_dir)
   else:
     if y < 100:
       x,y,cur_dir = move(x,y,x,y+steps,cur_dir)
     else:
-      x,y,cur_dir = move(x,y,x,y-steps,cur_dir)
+      x,y,cur_dir = move(x,y,x,y+steps,cur_dir)
   return x,y,cur_dir
 
 def main():
