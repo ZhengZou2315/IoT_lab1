@@ -53,7 +53,7 @@ def take_snapshot() -> None:
   font_thickness = 1
   fps_avg_frame_count = 10
 
-  # Initialize the object detection model
+   # Initialize the object detection model
   base_options = core.BaseOptions(
       file_name=model, use_coral=enable_edgetpu, num_threads=num_threads)
   detection_options = processor.DetectionOptions(
@@ -71,27 +71,36 @@ def take_snapshot() -> None:
       )
 
     counter += 1
-    print('count: ',counter)
+    print('counter: ', counter)
     image = cv2.flip(image, 1)
-    print('image:\n',image)
+    # print('image:\n',image)
 
-    print(' ')
+    # print(' ')
     # Convert the image from BGR to RGB as required by the TFLite model.
     rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    print('rgb_image:\n',rgb_image)
-    print(' ')
+    # print('rgb_image:\n',rgb_image)
+    # print(' ')
     # Create a TensorImage object from the RGB image.
     input_tensor = vision.TensorImage.create_from_array(rgb_image)
-    print('input_tensor:\n',input_tensor)
-    print(' ')
+    # print('input_tensor:\n',input_tensor)
+    # print(' ')
     # Run object detection estimation using the model.
     detection_result = detector.detect(input_tensor)
-    print('detection_result:\n',detection_result)
-    print(' ')
+    # print('detection_result:\n',detection_result)
+    # print(' ')
+    # print(' ')
+    detections = detection_result.detections
+    for detection in detections:
+      # print('detection:  ',detection)
+      # print(' ')
+      for category in detection.categories:
+        # print('category_name:  ', category.category_name, '   score: ', category.score)
+        if category.category_name == 'stop sign':
+          print('stop sign identified!!!')
     # Draw keypoints and edges on input image
     image = utils.visualize(image, detection_result)
-    print('image:\n',image)
-    print(' ')
+    # print('image:\n',image)
+    # print(' ')
     # Calculate the FPS
     if counter % fps_avg_frame_count == 0:
       end_time = time.time()
