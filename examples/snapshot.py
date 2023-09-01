@@ -63,7 +63,8 @@ def take_snapshot() -> None:
   detector = vision.ObjectDetector.create_from_options(options)
 
   # Continuously capture images from the camera and run inference
-  while cap.isOpened():
+  # while cap.isOpened():
+  if cap.isOpened():
     success, image = cap.read()
     if not success:
       sys.exit(
@@ -99,8 +100,7 @@ def take_snapshot() -> None:
           print('stop sign identified!!!')
     # Draw keypoints and edges on input image
     image = utils.visualize(image, detection_result)
-    # print('image:\n',image)
-    # print(' ')
+
     # Calculate the FPS
     if counter % fps_avg_frame_count == 0:
       end_time = time.time()
@@ -114,12 +114,12 @@ def take_snapshot() -> None:
                 font_size, text_color, font_thickness)
 
     # Stop the program if the ESC key is pressed.
-    if cv2.waitKey(1) == 27:
-      break
-    cv2.imshow('object_detector', image)
+    # if cv2.waitKey(1) == 27:
+    #   break
+    # cv2.imshow('object_detector', image)
 
-  cap.release()
-  cv2.destroyAllWindows()
+  # cap.release()
+  # cv2.destroyAllWindows()
 
 speed = 30
 
