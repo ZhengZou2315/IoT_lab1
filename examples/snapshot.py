@@ -105,7 +105,7 @@ def turn_left():
   # turn 90 degree
   # turn left parameters
   fc.turn_left(20)
-  time.sleep(1.29)
+  time.sleep(1.35)
   fc.stop()
 
 def turn_right():
