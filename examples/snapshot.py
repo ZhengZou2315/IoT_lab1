@@ -399,11 +399,11 @@ def count_ones(matrix):
 #   x_diff = path[idx][0]-x
 #   y_diff = path[idx][1]-y
 
-def block_in_front(scan_list):
+def get_front_dist(scan_list):
   for pair in scan_list:
-    if pair[0] == 0 and pair[1] <= 30 and pair[1] > 0:
-      return True
-  return False
+    if pair[0] == 0:
+      return pair[1]
+  return -2
 
 def pass_the_block(x,y,cur_dir,steps):
   if cur_dir == 'N' or cur_dir == 'S':
@@ -429,12 +429,14 @@ def main():
   cur_map = np.zeros((200, 200))
 
   while not_reached:
-      if take_snapshot():
-        time.sleep(2.19)
+      has_stop_sign = take_snapshot()
       cur_scan_list = get_scan_list()
       print('cur_scan_list:\n',cur_scan_list)
-      if block_in_front(cur_scan_list):
+      front_dist = get_front_dist(cur_scan_list)
         # by default, move 30
+      if has_stop_sign and front_dist < 30:
+        time.sleep(2.19)
+      if front_dist < 30:
         x,y,cur_dir = pass_the_block(x,y,cur_dir,30)
         continue
       # size: 200 * 200
