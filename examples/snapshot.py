@@ -460,10 +460,10 @@ def main():
 
 if __name__ == "__main__":
   try: 
-    # main()
-    while take_snapshot():
-        time.sleep(2.19)
-        print('stop sighn identified@!!!!!')
+    main()
+    # while take_snapshot():
+    #     time.sleep(2.19)
+    #     print('stop sighn identified@!!!!!')
     # take_snapshot()
     # move_forward(10) 
     # turn_left()
