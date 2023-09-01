@@ -128,7 +128,7 @@ def turn_left():
   # turn 90 degree
   # turn left parameters
   fc.turn_left(20)
-  time.sleep(1.23)
+  time.sleep(1.29)
   fc.stop()
 
 def turn_right():
@@ -435,7 +435,7 @@ def main():
       front_dist = get_front_dist(cur_scan_list)
         # by default, move 30
       if has_stop_sign and front_dist > 0 and front_dist < 30:
-        time.sleep(2.19)
+        time.sleep(10.19)
       if front_dist > 0 and front_dist < 30:
         x,y,cur_dir = pass_the_block(x,y,cur_dir,30)
         continue
