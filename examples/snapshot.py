@@ -40,7 +40,7 @@ def cutoff(val:float):
 
 
 def fill(point:tuple, cur_map):
-  margin = 6
+  margin = 20
   for dx in range(-margin, margin+1, 1):
     for dy in range(-margin, margin+1, 1):
       x = cutoff(point[0] + dx)
@@ -283,6 +283,11 @@ def count_ones(matrix):
       res += matrix[i][j]
   return res
 
+def determine_steps(x,y,path,idx):
+  x_diff = path[idx][0]-x
+  y_diff = path[idx][1]-y
+
+
 def main():
   # The move area is only 200 * 200.
   not_reached = True
@@ -305,6 +310,7 @@ def main():
       #     cur_dir = move(x,y,to_x,to_y,cur_dir)
       #     x,y = to_x,to_y
       idx = min(10, len(path)-1)
+      # idx = determine_steps(x,y,path,10)
       next_x,next_y = path[idx]
       print('next x:',next_x,'   next_y:',next_y)
       cur_dir = move(x,y,next_x,next_y,cur_dir)
