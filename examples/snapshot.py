@@ -429,8 +429,8 @@ def main():
   cur_map = np.zeros((200, 200))
 
   while not_reached:
-      if take_snapshot():
-        time.sleep(5.19)
+      while take_snapshot():
+        time.sleep(2.19)
       cur_scan_list = get_scan_list()
       print('cur_scan_list:\n',cur_scan_list)
       if block_in_front(cur_scan_list):
@@ -460,7 +460,10 @@ def main():
 
 if __name__ == "__main__":
   try: 
-    main()
+    # main()
+    while take_snapshot():
+        time.sleep(2.19)
+        print('stop sighn identified@!!!!!')
     # take_snapshot()
     # move_forward(10) 
     # turn_left()
