@@ -8,12 +8,16 @@ def main():
         if not scan_list:
             continue
 
-        tmp = scan_list[2:8]
+        tmp = scan_list[4:7]
         print('scan_list:',scan_list)
         tmp = [dist for angle,dist in tmp]
         # print('tmp:')
         print(tmp)
-        if tmp != [-2,-2,-2,-2,-2,-2]:
+        # if tmp != [-2,-2,-2,-2,-2,-2]:
+        #     fc.turn_right(speed)
+        # else:
+        #     fc.forward(speed)
+        if any([dist < 10 for dist in tmp]):
             fc.turn_right(speed)
         else:
             fc.forward(speed)
