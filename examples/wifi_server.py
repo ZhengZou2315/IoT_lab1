@@ -68,16 +68,16 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             turn_left()
             cur_idx = (cur_idx+3) % len(dirs)
             speed,dist = move_forward(10)
-        # elif command == 'right':
-        #     turn_right()
-        #     cur_idx = (cur_idx+1) % len(dirs)
-        #     speed,dist = move_forward(10)
-        # elif command == 'down':
-        #     turn_left()
-        #     turn_left()
-        #     cur_idx = (cur_idx+3) % len(dirs)
-        #     cur_idx = (cur_idx+3) % len(dirs)
-        #     speed,dist = move_forward(10)
+        elif command == 'right':
+            turn_right()
+            cur_idx = (cur_idx+1) % len(dirs)
+            speed,dist = move_forward(10)
+        elif command == 'down':
+            turn_left()
+            turn_left()
+            cur_idx = (cur_idx+3) % len(dirs)
+            cur_idx = (cur_idx+3) % len(dirs)
+            speed,dist = move_forward(10)
         speed,dist = move_forward(20)
         print('speed: ',speed,'  dist: ',dist)
         response = ','.join([dirs[cur_idx],str(speed),str(dist)])     
