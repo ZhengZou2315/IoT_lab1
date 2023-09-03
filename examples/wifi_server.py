@@ -21,7 +21,7 @@ def turn_right():
 
 def move_forward(x:int):
   time_interval = 0.1
-  speed_val = 25
+  speed_val = 30
   speed4 = fc.Speed(speed_val)
   speed4.start()
   dist = 0
