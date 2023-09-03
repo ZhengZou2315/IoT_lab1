@@ -21,7 +21,7 @@ def turn_right():
 
 def move_forward(x:int):
   time_interval = 0.1
-  speed_val = 10
+  speed_val = 25
   speed4 = fc.Speed(speed_val)
   speed4.start()
   dist = 0
@@ -74,7 +74,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         #     cur_idx = (cur_idx+3) % len(dirs)
         #     cur_idx = (cur_idx+3) % len(dirs)
         #     speed,dist = move_forward(10)
-        move_forward(25)
+        move_forward(10)
         # print('command: ',command)
         # response = ','.join([dirs[cur_idx],str(speed),str(dist)])     
         # data = response.encode('ascii')
