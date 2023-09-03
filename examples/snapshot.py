@@ -17,16 +17,6 @@ import utils
 
 
 def take_snapshot() -> None:
-  """Continuously run inference on images acquired from the camera.
-
-  Args:
-    model: Name of the TFLite object detection model.
-    camera_id: The camera id to be passed to OpenCV.
-    width: The width of the frame captured from the camera.
-    height: The height of the frame captured from the camera.
-    num_threads: The number of CPU threads to run the model.
-    enable_edgetpu: True/False whether the model is a EdgeTPU model.
-  """
 
   camera_id = 0
   width = 640
@@ -372,10 +362,6 @@ def count_ones(matrix):
       res += matrix[i][j]
   return res
 
-# def determine_steps(x,y,path,idx):
-#   x_diff = path[idx][0]-x
-#   y_diff = path[idx][1]-y
-
 def get_front_dist(scan_list):
   for pair in scan_list:
     if pair[0] == 0:
@@ -418,14 +404,11 @@ def main():
         continue
       # size: 200 * 200
       cur_map = make_map(x, y, cur_dir, cur_scan_list)
+      
       print('cur_map has one, the number is:',count_ones(cur_map))
-      # each step is 1cm, get the next 30 small steps (3 large steps) before update the map.
       path = get_path(x, y, cur_map, dest_x, dest_y)
-      # for to_x,to_y in next_hops:
-      #     cur_dir = move(x,y,to_x,to_y,cur_dir)
-      #     x,y = to_x,to_y
+
       idx = min(10, len(path)-1)
-      # idx = determine_steps(x,y,path,10)
       next_x,next_y = path[idx]
 
       not_reached = not is_reached(x,y,dest_x,dest_y)
@@ -439,22 +422,6 @@ def main():
 
 if __name__ == "__main__":
   try: 
-    main()
-    # while take_snapshot():
-    #     time.sleep(2.19)
-    #     print('stop sighn identified@!!!!!')
-    # take_snapshot()
-    # move_forward(10) 
-    # turn_left()
-    cur_map = np.zeros((200, 200))
-    # route = get_path(100, 0, cur_map, 20, 80)
-    # print('route:\n',route)
-
-    # move_x(30, 20, 'W')
-    # cur_dir = move_y(20, 10, 'W')
-
-    # cur_dir = move(0,0,10,20,'S')
-    # print('cur_dir: ',cur_dir)
-   
+    main()  
   finally: 
       fc.stop()
