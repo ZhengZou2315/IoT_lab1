@@ -58,7 +58,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         data = client.recv(1024)      # receive 1024 Bytes of message in binary format
         # if data != b"":
         command = data.decode('ascii')
-        print('data:',data,'  command:',command,' type(command):',type(command))
+        print('data:',data,'  command:',command,' type(command):',type(command), 'len: ',len(command))
         for ch in list(command):
            print('ch: ',ch,' \n')
         if command == 'up':
