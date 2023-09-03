@@ -57,28 +57,30 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         print("server recv from: ", clientInfo)
         data = client.recv(1024)      # receive 1024 Bytes of message in binary format
         # if data != b"":
-        command = data.decode('ascii')
-        if command == 'up':
-            speed,dist = move_forward(10)
-        elif command == 'left':
-            turn_left()
-            cur_idx = (cur_idx+3) % len(dirs)
-            speed,dist = move_forward(10)
-        elif command == 'right':
-            turn_right()
-            cur_idx = (cur_idx+1) % len(dirs)
-            speed,dist = move_forward(10)
-        elif command == 'down':
-            turn_left()
-            turn_left()
-            cur_idx = (cur_idx+3) % len(dirs)
-            cur_idx = (cur_idx+3) % len(dirs)
-            speed,dist = move_forward(10)
-        print('command: ',command)
-        response = ','.join([dirs[cur_idx],str(speed),str(dist)])     
-        data = response.encode('ascii')
+        # command = data.decode('ascii')
+        # if command == 'up':
+        #     speed,dist = move_forward(10)
+        # elif command == 'left':
+        #     turn_left()
+        #     cur_idx = (cur_idx+3) % len(dirs)
+        #     speed,dist = move_forward(10)
+        # elif command == 'right':
+        #     turn_right()
+        #     cur_idx = (cur_idx+1) % len(dirs)
+        #     speed,dist = move_forward(10)
+        # elif command == 'down':
+        #     turn_left()
+        #     turn_left()
+        #     cur_idx = (cur_idx+3) % len(dirs)
+        #     cur_idx = (cur_idx+3) % len(dirs)
+        #     speed,dist = move_forward(10)
+        move_forward(10)
+        # print('command: ',command)
+        # response = ','.join([dirs[cur_idx],str(speed),str(dist)])     
+        # data = response.encode('ascii')
         client.sendall(data) # Echo back to client
-    except: 
+    except Exception as e: 
+      print('e: ',e)
       print("Closing socket")
       client.close()
       s.close()    
