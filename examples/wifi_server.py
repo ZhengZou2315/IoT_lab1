@@ -57,7 +57,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         print("server recv from: ", clientInfo)
         data = client.recv(1024)      # receive 1024 Bytes of message in binary format
         # if data != b"":
-        # command = data.decode('ascii')
+        command = data.decode('ascii')
+        print('data:',data,'  command:',command)
         # if command == 'up':
         #     speed,dist = move_forward(10)
         # elif command == 'left':
@@ -74,8 +75,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         #     cur_idx = (cur_idx+3) % len(dirs)
         #     cur_idx = (cur_idx+3) % len(dirs)
         #     speed,dist = move_forward(10)
-        move_forward(20)
-        # print('command: ',command)
+        speed,dist = move_forward(20)
+        print('speed: ',speed,'  dist: ',dist)
         # response = ','.join([dirs[cur_idx],str(speed),str(dist)])     
         # data = response.encode('ascii')
         client.sendall(data) # Echo back to client
