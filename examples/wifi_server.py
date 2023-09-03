@@ -59,6 +59,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         # if data != b"":
         command = data.decode('ascii')
         print('data:',data,'  command:',command,' type(command):',type(command))
+        for ch in list(command):
+           print('ch: ',ch,' \n')
         if command == 'up':
             speed,dist = move_forward(10)
         elif command == 'left':
