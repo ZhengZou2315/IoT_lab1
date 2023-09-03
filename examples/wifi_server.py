@@ -58,7 +58,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         data = client.recv(1024)      # receive 1024 Bytes of message in binary format
         # if data != b"":
         command = data.decode('ascii')
-        print('data:',data,'  command:',command)
+        print('data:',data,'  command:',command,' type(command):',type(command))
         if command == 'up':
             speed,dist = move_forward(10)
         elif command == 'left':
