@@ -51,6 +51,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.listen()
     dirs = ['N','E','S','W']
     cur_idx = 0
+    speed = -1
+    dist = -1
     try:
       while 1:
         client, clientInfo = s.accept()
