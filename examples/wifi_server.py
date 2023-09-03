@@ -81,7 +81,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         speed,dist = move_forward(20)
         print('speed: ',speed,'  dist: ',dist)
         response = ','.join([dirs[cur_idx],str(speed),str(dist)])     
-        # data = response.encode('ascii')
+        data = response.encode('ascii')
         client.sendall(data) # Echo back to client
     except Exception as e: 
       print('e: ',e)
