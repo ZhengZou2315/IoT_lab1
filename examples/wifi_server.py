@@ -42,7 +42,7 @@ def move_forward(x:int):
   print('target dist: ',x, ' actual distance:  ',dist)
   # speed4.deinit()
   fc.stop()
-  return speed,dist
+  return speed,round(dist,2)
 
 
 
