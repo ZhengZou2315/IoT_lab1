@@ -78,7 +78,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             cur_idx = (cur_idx+3) % len(dirs)
             cur_idx = (cur_idx+3) % len(dirs)
             speed,dist = move_forward(10)
-        speed,dist = move_forward(20)
+        else:
+           client.sendall(data)
         print('speed: ',speed,'  dist: ',dist)
         response = ','.join([dirs[cur_idx],str(speed),str(dist)])     
         data = response.encode('ascii')
