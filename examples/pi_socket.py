@@ -63,7 +63,7 @@ def start_client():
             try:
                 try:
                     data = sock.recv(1024).decode('utf-8')
-                    message_queue.append(data)
+                    # message_queue.append(data)
                 except socket.error as e:
                     assert(1==1)
                     #no data

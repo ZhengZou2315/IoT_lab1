@@ -36,7 +36,7 @@ def start_client():
     global server_addr
     global server_port
     sock = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
-    sock.settimeout(10)
+    sock.settimeout(10000)
     sock.connect((server_addr,server_port))
     sock.settimeout(None)
     print("after connect")
