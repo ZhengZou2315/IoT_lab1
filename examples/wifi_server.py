@@ -25,30 +25,62 @@ def move_forward(x:int):
   speed4 = fc.Speed(speed_val)
   speed4.start()
   dist = 0
+  speed = -1
   fc.forward(speed_val)
   target_time = x/float(speed_val)
   # interval_count = int(target_time / time_interval) + 1 if int(target_time / time_interval) > 0 else 0
   interval_count = int(target_time*0.4 / time_interval)
   print('target_time: ',target_time,'  interval count:', interval_count)
+  
+  for _ in range(interval_count):
+    time.sleep(time_interval)
+    speed = speed4()
+    dist += speed * time_interval
+    print("%scm/s"%speed)
+
+  speed4.deinit()
+  print('target dist: ',x, ' actual distance:  ',dist)
+  # speed4.deinit()
+  fc.stop()
+  return speed,dist
 
 
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
     s.listen()
-
+    dirs = ['N','E','S','W']
+    cur_idx = 0
     try:
-        while 1:
-            client, clientInfo = s.accept()
-            print("server recv from: ", clientInfo)
-            data = client.recv(1024)      # receive 1024 Bytes of message in binary format
-            if data != b"":
-                content = data.decode('ascii')
-                print(content)     
-                client.sendall(data) # Echo back to client
+      while 1:
+        client, clientInfo = s.accept()
+        print("server recv from: ", clientInfo)
+        data = client.recv(1024)      # receive 1024 Bytes of message in binary format
+        # if data != b"":
+        command = data.decode('ascii')
+        if command == 'up':
+            speed,dist = move_forward(10)
+        elif command == 'left':
+            turn_left()
+            cur_idx = (cur_idx+3) % len(dirs)
+            speed,dist = move_forward(10)
+        elif command == 'right':
+            turn_right()
+            cur_idx = (cur_idx+1) % len(dirs)
+            speed,dist = move_forward(10)
+        elif command == 'down':
+            turn_left()
+            turn_left()
+            cur_idx = (cur_idx+3) % len(dirs)
+            cur_idx = (cur_idx+3) % len(dirs)
+            speed,dist = move_forward(10)
+        print('command: ',command)
+        response = ','.join([dirs[cur_idx],str(speed),str(dist)])     
+        data = response.encode('ascii')
+        client.sendall(data) # Echo back to client
     except: 
-        print("Closing socket")
-        client.close()
-        s.close()    
+      print("Closing socket")
+      client.close()
+      s.close()    
 
 # netstat -anpe | grep "65432"
