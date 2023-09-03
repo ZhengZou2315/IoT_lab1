@@ -59,12 +59,12 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         # if data != b"":
         command = data.decode('ascii')
         print('data:',data,'  command:',command)
-        # if command == 'up':
-        #     speed,dist = move_forward(10)
-        # elif command == 'left':
-        #     turn_left()
-        #     cur_idx = (cur_idx+3) % len(dirs)
-        #     speed,dist = move_forward(10)
+        if command == 'up':
+            speed,dist = move_forward(10)
+        elif command == 'left':
+            turn_left()
+            cur_idx = (cur_idx+3) % len(dirs)
+            speed,dist = move_forward(10)
         # elif command == 'right':
         #     turn_right()
         #     cur_idx = (cur_idx+1) % len(dirs)
