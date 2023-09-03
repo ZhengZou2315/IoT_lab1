@@ -62,6 +62,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         if command == 'up':
             speed,dist = move_forward(10)
         elif command == 'left':
+            print('In the left mode!!!!')
             turn_left()
             cur_idx = (cur_idx+3) % len(dirs)
             speed,dist = move_forward(10)
