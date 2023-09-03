@@ -53,6 +53,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     cur_idx = 0
     speed = -1
     dist = -1
+    target_dist = 20
     try:
       while 1:
         client, clientInfo = s.accept()
@@ -60,26 +61,26 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         data = client.recv(1024)      # receive 1024 Bytes of message in binary format
         # if data != b"":
         command = data.decode('ascii')[:-2]
-        print('data:',data,'  command:',command,' type(command):',type(command), 'len: ',len(command))
-        for ch in list(command):
-           print('ch: ',ch,' \n')
+        # print('data:',data,'  command:',command,' type(command):',type(command), 'len: ',len(command))
+        # for ch in list(command):
+        #    print('ch: ',ch,' \n')
         if command == 'up':
-            speed,dist = move_forward(10)
+            speed,dist = move_forward(target_dist)
         elif command == 'left':
             print('In the left mode!!!!')
             turn_left()
             cur_idx = (cur_idx+3) % len(dirs)
-            speed,dist = move_forward(10)
+            speed,dist = move_forward(target_dist)
         elif command == 'right':
             turn_right()
             cur_idx = (cur_idx+1) % len(dirs)
-            speed,dist = move_forward(10)
+            speed,dist = move_forward(target_dist)
         elif command == 'down':
             turn_left()
             turn_left()
             cur_idx = (cur_idx+3) % len(dirs)
             cur_idx = (cur_idx+3) % len(dirs)
-            speed,dist = move_forward(10)
+            speed,dist = move_forward(target_dist)
         else:
            client.sendall(data)
         print('speed: ',speed,'  dist: ',dist)
