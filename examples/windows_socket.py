@@ -35,6 +35,7 @@ def start_client():
     global output
     global server_addr
     global server_port
+    message_queue.append(90909090)
     sock = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
     sock.settimeout(10000)
     sock.connect((server_addr,server_port))
@@ -45,6 +46,7 @@ def start_client():
         if dq_lock.acquire(blocking=False):
             if(len(message_queue) > 0):
                 try:
+                    print('message_queue[0]:',message_queue[0])
                     sent = sock.send(bytes(message_queue[0], 'utf-8'))
                 except Exception as e:
                     exit_event.set()
