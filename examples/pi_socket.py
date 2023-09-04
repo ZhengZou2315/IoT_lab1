@@ -128,12 +128,12 @@ cth = threading.Thread(target=start_client)
 cth.start()
 
 j = 0
-# while not exit_event.is_set():
-#     dq_lock.acquire()
-#     message_queue.append("RPi " + str(j) + " \r\n")
-#     dq_lock.release()
-#     j += 1
-#     time.sleep(1.5)
+while not exit_event.is_set():
+    dq_lock.acquire()
+    # message_queue.append("RPi " + str(j) + " \r\n")
+    dq_lock.release()
+    j += 1
+    time.sleep(1.5)
     
 
 print("Disconnected.")
