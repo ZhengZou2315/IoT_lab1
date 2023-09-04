@@ -3,9 +3,49 @@ import threading
 from collections import deque
 import signal
 import time
+import picar_4wd as fc
 
 server_addr = 'D8:3A:DD:21:3F:0E'
 server_port = 1
+
+def turn_left():
+  # turn 90 degree
+  # turn left parameters
+  fc.turn_left(20)
+  time.sleep(1.35)
+  fc.stop()
+
+def turn_right():
+  # turn 90 degree
+  # turn right parameters
+  fc.turn_right(20)
+  time.sleep(1.20)
+  fc.stop()
+
+def move_forward(x:int):
+  time_interval = 0.1
+  speed_val = 25
+  speed4 = fc.Speed(speed_val)
+  speed4.start()
+  dist = 0
+  speed = -1
+  fc.forward(speed_val)
+  target_time = x/float(speed_val)
+  # interval_count = int(target_time / time_interval) + 1 if int(target_time / time_interval) > 0 else 0
+  interval_count = int(target_time*0.4 / time_interval)
+  print('target_time: ',target_time,'  interval count:', interval_count)
+  
+  for _ in range(interval_count):
+    time.sleep(time_interval)
+    speed = speed4()
+    dist += speed * time_interval
+    print("%scm/s"%speed)
+
+  speed4.deinit()
+  print('target dist: ',x, ' actual distance:  ',dist)
+  # speed4.deinit()
+  fc.stop()
+  return speed,round(dist,2)
 
 buf_size = 1024
 
@@ -63,6 +103,7 @@ def start_client():
             try:
                 try:
                     data = sock.recv(1024).decode('utf-8')
+                    print('data:',data,' len(data):',len(data))
                     # message_queue.append(data)
                 except socket.error as e:
                     assert(1==1)
@@ -87,12 +128,12 @@ cth = threading.Thread(target=start_client)
 cth.start()
 
 j = 0
-while not exit_event.is_set():
-    dq_lock.acquire()
-    message_queue.append("RPi " + str(j) + " \r\n")
-    dq_lock.release()
-    j += 1
-    time.sleep(1.5)
+# while not exit_event.is_set():
+#     dq_lock.acquire()
+#     message_queue.append("RPi " + str(j) + " \r\n")
+#     dq_lock.release()
+#     j += 1
+#     time.sleep(1.5)
     
 
 print("Disconnected.")
