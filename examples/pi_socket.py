@@ -84,6 +84,9 @@ def start_client():
     print("Connected")
     server_sock.settimeout(None)
     sock.setblocking(0)
+    target_dist = 20
+    dirs = ['N','E','S','W']
+    cur_idx = 0
     while not exit_event.is_set():
         if dq_lock.acquire(blocking=False):
             if(len(message_queue) > 0):
@@ -104,7 +107,25 @@ def start_client():
                 try:
                     data = sock.recv(1024).decode('utf-8')
                     print('data:',data,' len(data):',len(data))
-                    # message_queue.append(data)
+                    if data == 'up':
+                        speed,dist = move_forward(target_dist)
+                    elif data == 'left':
+                        print('In the left mode!!!!')
+                        turn_left()
+                        cur_idx = (cur_idx+3) % len(dirs)
+                        speed,dist = move_forward(target_dist)
+                    elif data == 'right':
+                        turn_right()
+                        cur_idx = (cur_idx+1) % len(dirs)
+                        speed,dist = move_forward(target_dist)
+                    elif data == 'down':
+                        turn_left()
+                        turn_left()
+                        cur_idx = (cur_idx+3) % len(dirs)
+                        cur_idx = (cur_idx+3) % len(dirs)
+                        speed,dist = move_forward(target_dist)
+                    response = 'speed:{speed}, distance:{dist}'.format(speed=speed,dist=dist)
+                    message_queue.append(response)
                 except socket.error as e:
                     assert(1==1)
                     #no data
