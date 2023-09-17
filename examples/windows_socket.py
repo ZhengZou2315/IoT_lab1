@@ -43,10 +43,7 @@ def start_client():
   print("after connect")
   sock.setblocking(False)
   while not exit_event.is_set():
-    text = input("Enter your message: ") # Note change to the old (Python 2) raw_input
-    if text == "quit":
-        break
-    sock.send(text.encode())
+    
     # if dq_lock.acquire(blocking=False):
     #     if(len(message_queue) > 0):
     #         try:
@@ -61,11 +58,12 @@ def start_client():
     #             message_queue.popleft()
     #     dq_lock.release()
     
-    if output_lock.acquire(blocking=False):
+    if output_lock.acquire(blocking=True):
         data = ""
         try:
             try:
                 data = sock.recv(1024).decode("utf-8")
+                print('received message:',data)
             except socket.error as e:
                 assert(1==1)
                 #no data
@@ -78,6 +76,12 @@ def start_client():
             print(output_split[i])
         output = output_split[-1]
         output_lock.release()
+    
+    text = input("Enter your message: ") # Note change to the old (Python 2) raw_input
+    if text == "quit":
+        break
+    sock.send(text.encode())
+
   sock.close()
   print("client thread end")
 
